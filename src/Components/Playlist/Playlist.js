@@ -7,7 +7,7 @@ class Playlist extends React.Component {
     return (
       <div className={styles.Playlist}>
         <input value="New Playlist"/>
-        <TrackList />
+        <TrackList tracks={this.props.playlistTracks} />
         <button className={styles.PlaylistSave}>
           SAVE TO SPOTIFY
         </button>
