@@ -5,6 +5,8 @@ import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults'
 import Playlist from '../Playlist/Playlist';
 
+import Spotify from '../../util/Spotify';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -27,7 +29,7 @@ class App extends React.Component {
         }
       ]
     };
-    
+
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
@@ -61,8 +63,9 @@ class App extends React.Component {
     return trackURIs;
   }
 
-  search(term) {
-    console.log(term);
+  async search(term) {
+    const searchResults = await Spotify.search(term);
+    this.setState({ searchResults: searchResults });
   }
 
   render() {
