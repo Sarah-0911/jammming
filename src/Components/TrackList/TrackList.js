@@ -6,6 +6,10 @@ class TrackList extends React.Component {
   render() {
     const tracks = this.props.tracks || [];
 
+    if(!Array.isArray(tracks)) {
+      return null;
+    }
+
     const trackElements = tracks.map(track => {
       return (
       <li key={track.id}>
