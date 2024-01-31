@@ -42,6 +42,7 @@ const Spotify = {
     }
 
     const jsonResponse = await response.json();
+    console.log('Search API response:', jsonResponse);
     if (!jsonResponse.tracks) {
       return [];
       }
@@ -60,7 +61,7 @@ const Spotify = {
       return;
     }
 
-    const accessToken = Spotify.getAccessToken();
+    const accessToken = this.getAccessToken();
     const headers = { Authorization: `Bearer ${accessToken}` };
     let userId;
 
@@ -88,11 +89,17 @@ const Spotify = {
       const playlistJsonResponse = await createPlaylistResponse.json();
       const playlistID = playlistJsonResponse.id;
 
+      const createTracksUriResponse = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistID}/tracks`,
+      {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({ uris: trackURIs })
+      });
+
     } catch (error) {
       console.error('Error during playlist creation:', error.message);
     }
   }
-
 }
 
 export default Spotify;
