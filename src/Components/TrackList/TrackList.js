@@ -2,34 +2,32 @@ import React from 'react';
 import styles from './TrackList.module.css';
 import Track from '../Track/Track';
 
-class TrackList extends React.Component {
-  render() {
-    const tracks = this.props.tracks || [];
+const TrackList = props => {
+  const tracks = props.tracks || [];
 
-    if(!Array.isArray(tracks)) {
-      return null;
-    }
-
-    const trackElements = tracks.map(track => {
-      return (
-      <li key={track.id}>
-        <Track
-          track={track}
-          onAdd={this.props.onAdd}
-          onRemove={this.props.onRemove}
-          isRemoval={this.props.isRemoval}
-        />
-      </li>)
-    })
-
-    return (
-      <div className={styles.TrackList}>
-        <ul>
-          {trackElements}
-        </ul>
-      </div>
-    )
+  if(!Array.isArray(tracks)) {
+    return null;
   }
+
+  const trackElements = tracks.map(track => {
+    return (
+    <li key={track.id}>
+      <Track
+        track={track}
+        onAdd={props.onAdd}
+        onRemove={props.onRemove}
+        isRemoval={props.isRemoval}
+      />
+    </li>)
+  })
+
+  return (
+    <div className={styles.TrackList}>
+      <ul>
+        {trackElements}
+      </ul>
+    </div>
+  )
 }
 
 export default TrackList;
