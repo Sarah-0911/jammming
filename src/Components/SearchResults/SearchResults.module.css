@@ -1,10 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
 .SearchResults {
   width: 50%;
-  height: 950px;
+  height: 600px;
   overflow-y: scroll;
   padding: .88rem;
-  background-color: rgba(1, 12, 63, 0.7);
+  background-color: rgb(1, 22, 39);
   box-shadow: 0 4px 2px 2px #000000;
+}
+
+.title {
+  padding: 1rem 0;
+  font-family: 'Comfortaa', sans-serif;
+  text-align: center;
+  font-variant: small-caps;
+  letter-spacing: .2rem;
+  border-bottom: 1px solid #6f6f6f;
+  font-weight: 600;
+  color: #c1c1c1;
+}
+
+.R {
+  font-size: 1.2rem;
 }
 
 ::-webkit-scrollbar {

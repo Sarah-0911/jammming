@@ -1,20 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+
 .SearchBar {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 6.94rem;
-  margin-bottom: 6.33rem;
+  padding: 6rem 0;
+  margin-bottom: 4rem;
 }
 
 .SearchBar input {
-  width: 287px;
+  width: 500px;
   padding: .88rem 0;
   border: 1px solid #fff;
   border-radius: 3px;
   margin-bottom: 2.22rem;
-  color: #010c3f;
+  color: #011627;
   text-align: center;
   font-size: 1rem;
+  font-family: 'Comfortaa', sans-serif;
 }
 
 .SearchBar input:focus {
@@ -26,15 +30,16 @@
   width: 8.11rem;
   padding: .77rem 0;
   border-radius: 54px;
-  background-color: #010c3f;
+  background-color: #4E2DEC;
+  box-shadow: 0 0 2px black;
   text-align: center;
   font-size: .833rem;
-  transition: background-color .25s;
+  transition: background-color .5s;
   border: 0px;
   color: #fff;
   font-weight: 500;
 }
 
 .SearchButton:hover {
-  background-color: rgba(108, 65, 233, .7);
+  background-color: #3d24b9;
 }

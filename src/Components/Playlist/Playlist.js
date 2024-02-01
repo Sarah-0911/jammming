@@ -11,7 +11,10 @@ const Playlist = props => {
 
   return (
     <div className={styles.Playlist}>
-      <input defaultValue="New Playlist" onChange={handleNameChange}/>
+      <input
+        defaultValue="New playlist"
+        onChange={handleNameChange}
+      />
       <TrackList
         tracks={props.playlistTracks}
         onRemove={props.onRemove}

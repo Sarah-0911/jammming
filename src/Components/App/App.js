@@ -50,7 +50,9 @@ const App = () => {
     <div>
       <h1>Ja<span className={styles.highlight}>mmm</span>ing</h1>
       <div className={styles.App}>
-        <SearchBar onSearch={search} />
+        <div className={styles.background}>
+          <SearchBar onSearch={search} />
+        </div>
         <div className={styles.AppPlaylist}>
         <SearchResults
           searchResults={searchResults}
