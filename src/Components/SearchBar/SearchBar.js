@@ -12,11 +12,16 @@ const SearchBar = props => {
     props.onSearch(term);
   }
 
+  const handleKeyDown = event => {
+    event.key === 'Enter' && search();
+  }
+
   return (
     <div className={styles.SearchBar}>
       <input
         placeholder="Enter A Song, Album, or Artist"
         onChange={handleTermChange}
+        onKeyDown={handleKeyDown}
       />
       <button
         className={styles.SearchButton}
