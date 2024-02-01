@@ -6,7 +6,7 @@ import TrackList from '../TrackList/TrackList';
 const SearchResults = props => {
   return (
     <div className={styles.SearchResults}>
-      <h2 className={styles.title}><span className={styles.R}>R</span>esults</h2>
+      <h2 className={styles.title}>results</h2>
       <TrackList
         tracks={props.searchResults}
         onAdd={props.onAdd}

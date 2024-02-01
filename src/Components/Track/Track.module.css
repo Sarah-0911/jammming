@@ -35,3 +35,9 @@
   font-weight: 300;
   color: rgba(256, 256, 256, 0.8);
 }
+
+.artist {
+  padding-top: .2rem;
+  color: #6f6f6f;
+  font-size: .9rem;
+}

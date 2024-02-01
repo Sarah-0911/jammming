@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap');
 
 .SearchBar {
   display: flex;
@@ -7,6 +6,9 @@
   align-items: center;
   padding: 6rem 0;
   margin-bottom: 4rem;
+  background-image: url('./background_casque.jpg');
+  background-size: cover;
+  background-position: top;
 }
 
 .SearchBar input {
@@ -18,7 +20,7 @@
   color: #011627;
   text-align: center;
   font-size: 1rem;
-  font-family: 'Comfortaa', sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 .SearchBar input:focus {
@@ -41,5 +43,5 @@
 }
 
 .SearchButton:hover {
-  background-color: #3d24b9;
+  background-color: #301d92;
 }
