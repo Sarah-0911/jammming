@@ -1,20 +1,21 @@
 import React from "react";
 import styles from './Track.module.css';
 
-class Track extends React.Component {
-  constructor(props) {
-    super(props);
-    // this.state = { isRemoval: true };
-    this.addTrack = this.addTrack.bind(this);
-    this.removeTrack = this.removeTrack.bind(this);
+const Track = props => {
+  const addTrack = () => {
+    props.onAdd(props.track);
   }
 
-  renderAction() {
-    if(this.props.isRemoval) {
+  const removeTrack = () => {
+    props.onRemove(props.track);
+  }
+
+  const renderAction = () => {
+    if(props.isRemoval) {
       return (
         <button
           className={styles.TrackAction}
-          onClick={this.removeTrack}>
+          onClick={removeTrack}>
         -
         </button>
       )
@@ -22,32 +23,22 @@ class Track extends React.Component {
       return (
         <button
           className={styles.TrackAction}
-          onClick={this.addTrack}>
+          onClick={addTrack}>
         +
         </button>
       )
     }
   }
 
-  addTrack() {
-    this.props.onAdd(this.props.track);
-  }
-
-  removeTrack() {
-    this.props.onRemove(this.props.track);
-  }
-
-  render() {
-    return (
-      <div className={styles.Track}>
-        <div className={styles.TrackInformation}>
-          <h3>{this.props.track.name}</h3>
-          <p>{this.props.track.artist} | {this.props.track.album}</p>
-        </div>
-          {this.renderAction()}
+  return (
+    <div className={styles.Track}>
+      <div className={styles.TrackInformation}>
+        <h3>{props.track.name}</h3>
+        <p>{props.track.artist} | {props.track.album}</p>
       </div>
-    )
-  }
+        {renderAction()}
+    </div>
+  )
 }
 
 export default Track;
