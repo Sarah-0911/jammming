@@ -20,6 +20,9 @@
     "serve": "^14.2.1",
     "web-vitals": "^2.1.4"
   },
+  "engines": {
+    "node": "16.15.1"
+  },
   "scripts": {
     "start": "serve -s build",
     "predeploy": "npm run build",
