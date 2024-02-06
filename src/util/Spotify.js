@@ -1,5 +1,4 @@
 import config from './config';
-import axios from "axios";
 
 const clientId = config.clientId;
 const redirectUri = 'http://localhost:3000/';

@@ -48,9 +48,8 @@ const App = () => {
 
   return (
     <div>
-      <h1>Titre</h1>
-      {/* <h1>Ja<span className={styles.highlight}>mmm</span>ing</h1> */}
-      {/* <div className={styles.App}>
+      <h1>Ja<span className={styles.highlight}>mmm</span>ing</h1>
+      <div className={styles.App}>
         <SearchBar onSearch={search} />
         <div className={styles.AppPlaylist}>
         <SearchResults
@@ -65,7 +64,7 @@ const App = () => {
           onSave={savePlaylist}
         />
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }
