@@ -1,4 +1,5 @@
-import config from './config'
+import config from './config';
+import axios from "axios";
 
 const clientId = config.clientId;
 const redirectUri = 'http://localhost:3000/';
@@ -19,6 +20,7 @@ const Spotify = {
       const expiresIn = Number(expiresInMatch[1]);
       window.setTimeout(() => accessToken = '', expiresIn * 1000);
       window.history.pushState('Access Token', null, '/');
+      localStorage.setItem("token", accessToken);
       return accessToken;
     } else {
       const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`
