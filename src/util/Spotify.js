@@ -1,7 +1,7 @@
 import config from './config';
 
 const clientId = config.clientId;
-const redirectUri = 'http://localhost:3000/';
+const redirectUri = 'https://react-jammming-2a8c29957e39.herokuapp.com/';
 let accessToken;
 
 const Spotify = {
