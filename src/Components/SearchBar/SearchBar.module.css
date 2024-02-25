@@ -6,9 +6,9 @@
   align-items: center;
   padding: 6rem 0;
   margin-bottom: 4rem;
-  background-image: url('./background_casque.jpg');
+  background-image: url('./background_vinyl.jpg');
   background-size: cover;
-  background-position: top;
+  background-position-y: 25%;
 }
 
 .SearchBar input {
@@ -33,7 +33,6 @@
   padding: .77rem 0;
   border-radius: 54px;
   background-color: #4E2DEC;
-  box-shadow: 0 0 2px black;
   text-align: center;
   font-size: .833rem;
   transition: background-color .5s;
