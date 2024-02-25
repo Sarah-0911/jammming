@@ -23,7 +23,7 @@
     "node": "16.15.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "serve -s start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
