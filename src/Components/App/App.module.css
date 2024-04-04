@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 body,
 html,
@@ -12,19 +12,20 @@ html {
 
 h1 {
   padding: .77rem 0;
-  background-color: #011627;
-  height: 40px;
+  background-color: #304A85;
+  height: 50px;
   text-align: center;
-  letter-spacing: .08rem;
-  font-family: "Quicksand", sans-serif;
-  font-size: 2rem;
+  letter-spacing: .2rem;
+  font-family: "Lobster Two", sans-serif;
+  font-size: 2.2rem;
   color: #fff;
-  font-weight: 500;
+  font-weight: 700;
+  font-style: italic;
   cursor: default;
 }
 
 h1 .highlight {
-  color: #4E2DEC;
+  color: #fdfcdc;
   font-weight: 800;
 }
 
@@ -34,9 +35,8 @@ h2 {
 }
 
 .App {
-  background-image: url('./background_lights.jpg');
+  background-color: #fdfcdc;
   background-size: cover;
-  background-repeat: no-repeat;
 }
 
 .AppPlaylist {

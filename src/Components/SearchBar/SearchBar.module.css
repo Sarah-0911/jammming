@@ -6,13 +6,12 @@
   align-items: center;
   padding: 6rem 0;
   margin-bottom: 4rem;
-  background-image: url('./background_vinyl.jpg');
+  background-image: url('./hero_vinyl.jpg');
   background-size: cover;
-  background-position-y: 25%;
 }
 
 .SearchBar input {
-  width: 500px;
+  width: 80%;
   padding: .88rem 0;
   border: 1px solid #fff;
   border-radius: 3px;
@@ -32,7 +31,7 @@
   width: 8.11rem;
   padding: .77rem 0;
   border-radius: 54px;
-  background-color: #4E2DEC;
+  background-color: #06ACB2;
   text-align: center;
   font-size: .833rem;
   transition: background-color .5s;
@@ -42,5 +41,5 @@
 }
 
 .SearchButton:hover {
-  background-color: #301d92;
+  background-color: #006e72;
 }
