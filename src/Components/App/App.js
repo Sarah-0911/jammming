@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './App.module.css';
 
 import SearchBar from '../SearchBar/SearchBar';
@@ -9,20 +9,42 @@ import Spotify from '../../util/Spotify';
 
 const App = () => {
     const [loading, setLoading] = useState(false);
+    const [tokenReady, setTokenReady] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
     const [playlistName, setPlaylistName] = useState('My Playlist');
     const [playlistTracks, setPlaylistTracks] = useState([]);
 
+  useEffect(() => {
+    const fetchToken = async () => {
+      try {
+        const token = await Spotify.getAccessToken();
+        if (token){
+          setTokenReady(true);
+        }
+      } catch (error) {
+        console.error('Error fetching access token:', error);
+      }
+    };
+
+    fetchToken();
+  }, []);
+
   const handleSearch = async (term) => {
+    if (!tokenReady) {
+      return;
+    }
+
     setLoading(true);
+
     try {
       const results = await Spotify.search(term);
-      console.log(results);
+      // console.log(results);
       setSearchResults(results);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const addTrack = (track) => {
