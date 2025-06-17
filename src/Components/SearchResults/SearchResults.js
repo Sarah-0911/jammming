@@ -4,8 +4,9 @@ import styles from './SearchResults.module.css';
 import TrackList from '../TrackList/TrackList';
 
 const SearchResults = props => {
+
   return (
-    <div className={styles.SearchResults}>
+    <div className={styles.searchResults}>
       <h2 className={styles.title}>Results</h2>
       <TrackList
         tracks={props.searchResults}

@@ -1,39 +1,46 @@
-.Track {
+.track {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(256, 256, 256, 0.8);
+  justify-content: space-between;
+  border-bottom: 1px solid #CB5331;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
 }
 
-.TrackAction {
+.trackAction {
   cursor: pointer;
   padding: .5rem;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   transition: color .25s;
   border: 0px;
   background-color: rgba(0, 0, 0, 0);
   color: #faf2e9;
 }
 
-.TrackAction:hover {
+.trackAction:hover {
   color: rgba(265, 265, 265, .5);
 }
 
-.TrackInformation {
-  flex-grow: 1;
+.trackInfos {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 72px;
+  gap: 12px;
 }
 
-.TrackInformation h3 {
+.trackInfos h3 {
   color: #faf2e9;
-  margin-bottom: .22rem;
+  margin-bottom: .28rem;
 }
+
+.trackInfos img {
+  border-radius: 4px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
 
 .artist {
   padding-top: .2rem;
+  font-weight: 500;
+  color: #CB5331;
   font-size: .9rem;
-  font-weight: 400;
-  color: #ce916d;
+
 }
