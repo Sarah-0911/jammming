@@ -11,7 +11,7 @@ const App = () => {
     const [loading, setLoading] = useState(false);
     const [tokenReady, setTokenReady] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
-    const [playlistName, setPlaylistName] = useState('My Playlist');
+    const [playlistName, setPlaylistName] = useState('');
     const [playlistTracks, setPlaylistTracks] = useState([]);
 
   useEffect(() => {

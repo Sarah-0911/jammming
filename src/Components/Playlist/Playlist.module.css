@@ -28,7 +28,7 @@
   box-shadow: inset 0 0 4px rgba(78, 45, 236, .6);
   border-radius: 3px;
   font-size: 1.2rem;
-  color: #c1c1c1;
+  color: #faf2e9;
   margin: 1.4rem 0 .8rem 0;
   padding: .7rem 0 .7rem .5rem;
   font-family: 'Rubik', sans-serif;
@@ -36,9 +36,13 @@
   transition: box-shadow .5s;
 }
 
-.playlist input:hover {
-  box-shadow: inset 0 0 8px rgb(132, 108, 255);
+.playlistContainer input::placeholder {
+  color: #faf2e9;
+  opacity: .5;
+}
 
+input:focus {
+  outline: 1px solid #e88e34;
 }
 
 .playlistSave {

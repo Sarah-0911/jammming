@@ -12,7 +12,8 @@ const Playlist = props => {
   return (
     <div className={styles.playlistContainer}>
       <input
-        defaultValue="New playlist"
+        placeholder='New playlist'
+        value={props.playlistName}
         onChange={handleNameChange}
       />
       <TrackList
