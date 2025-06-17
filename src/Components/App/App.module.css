@@ -12,12 +12,13 @@ h2 {
 }
 
 .appPlaylist {
-  padding: 0 8% 4% 8%;
+  padding: 0 20px 20px 20px;
   display: flex;
-  justify-content: space-between;
+  gap: 20px;
   font-family: 'Work Sans', sans-serif;
   font-weight: 500;
-  color: #fff;
+  background-color: #faf2e9;
+  padding-top: 4rem;
 }
 
 @media only screen and (max-width: 1020px) {

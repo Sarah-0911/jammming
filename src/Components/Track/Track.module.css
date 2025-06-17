@@ -11,7 +11,7 @@
   transition: color .25s;
   border: 0px;
   background-color: rgba(0, 0, 0, 0);
-  color: #fff;
+  color: #faf2e9;
 }
 
 .TrackAction:hover {
@@ -27,17 +27,13 @@
 }
 
 .TrackInformation h3 {
+  color: #faf2e9;
   margin-bottom: .22rem;
-}
-
-.Track-Information p {
-  font-size: .83rem;
-  font-weight: 300;
-  color: rgba(256, 256, 256, 0.8);
 }
 
 .artist {
   padding-top: .2rem;
-  color: #a7a7a7;
   font-size: .9rem;
+  font-weight: 400;
+  color: #ce916d;
 }
