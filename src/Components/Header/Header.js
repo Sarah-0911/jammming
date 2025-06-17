@@ -17,18 +17,20 @@ const Header = ({ onSearch }) => {
   }
 
   return (
-    <div className={styles.HeaderContainer}>
-      <h1>Jammming</h1>
-      <input
-        placeholder="Enter A Song, Album, or Artist"
-        onChange={handleTermChange}
-        onKeyDown={handleKeyDown}
-      />
-      <button
-        className={styles.SearchButton}
-        onClick={search}>
-        SEARCH
-      </button>
+    <div className={styles.headerContainer}>
+      <div className={styles.headerContent}>
+        <h1>Jammming</h1>
+        <input
+          placeholder="Enter A Song, Album, or Artist"
+          onChange={handleTermChange}
+          onKeyDown={handleKeyDown}
+        />
+        <button
+          className={styles.searchButton}
+          onClick={search}>
+          SEARCH
+        </button>
+      </div>
     </div>
   )
 }

@@ -4,15 +4,17 @@ h1 {
   width: 100%;
   margin-bottom: 1rem;
   text-align: center;
-  font-size: clamp(4rem, 4vw, 6.5rem);
+  font-size: 5rem;
   font-family: "Playfair Display", serif;
-  color: #F4ECDC;
-  font-weight: 700;
+  color: #ff4e2e;
+  font-weight: 900;
   text-transform: uppercase;
   letter-spacing: .07rem;
+  text-shadow: 2px 2px 4px rgba(0, 0.2, 0.2, 0.9);
 }
 
-.HeaderContainer {
+.headerContainer {
+  position: relative;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,7 +25,16 @@ h1 {
   background-size: cover;
 }
 
-.HeaderContainer input {
+.headerContent {
+  padding: 2rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerContent input {
   max-width: 400px;
   width: 100%;
   margin: 2rem;
@@ -35,11 +46,11 @@ h1 {
   font-family: 'Rubik', sans-serif;
 }
 
-.Header input:focus {
+.header input:focus {
   outline: none;
 }
 
-.SearchButton {
+.searchButton {
   cursor: pointer;
   width: 8.11rem;
   padding: .77rem 0;
@@ -53,6 +64,12 @@ h1 {
   font-weight: 500;
 }
 
-.SearchButton:hover {
+.searchButton:hover {
   background-color: #da381c;
+}
+
+@media (max-width: 600px) {
+  h1 {
+  font-size: 3rem;
+}
 }

@@ -42,7 +42,7 @@ const App = () => {
       setSearchResults(results);
       setTimeout(() => {
         playlistRef.current?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+      }, 1);
     } catch (error) {
       console.log(error);
     } finally {
