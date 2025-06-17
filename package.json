@@ -16,14 +16,14 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
-    "serve": "^14.2.1",
+    "serve": "^14.2.4",
     "web-vitals": "^2.1.4"
   },
   "engines": {
     "node": "16.15.1"
   },
   "scripts": {
-    "start": "serve -s start",
+    "start": "serve -s build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
