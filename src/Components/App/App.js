@@ -8,9 +8,22 @@ import Playlist from '../Playlist/Playlist';
 import Spotify from '../../util/Spotify';
 
 const App = () => {
+    const [loading, setLoading] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
     const [playlistName, setPlaylistName] = useState('My Playlist');
     const [playlistTracks, setPlaylistTracks] = useState([]);
+
+  const handleSearch = async (term) => {
+    setLoading(true);
+    try {
+      const results = await Spotify.search(term);
+      console.log(results);
+      setSearchResults(results);
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
+  };
 
   const addTrack = (track) => {
     const tracksInPlaylist = playlistTracks.find(
@@ -40,18 +53,15 @@ const App = () => {
     setPlaylistTracks([]);
   };
 
-  const search = async (term) => {
-    const results = await Spotify.search(term);
-    console.log(results);
-    setSearchResults(results);
-  };
-
   return (
     <div>
       <h1>Ja<span className={styles.highlight}>mmm</span>ing</h1>
       <div className={styles.App}>
-        <SearchBar onSearch={search} />
+        <SearchBar onSearch={handleSearch} />
         <div className={styles.AppPlaylist}>
+
+        {loading && <p>Chargement...</p> }
+
         <SearchResults
           searchResults={searchResults}
           onAdd={addTrack}

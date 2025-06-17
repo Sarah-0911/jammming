@@ -17,7 +17,7 @@ const SearchBar = props => {
   }
 
   return (
-    <div className={styles.SearchBar}>
+    <div className={styles.SearchBarContainer}>
       <input
         placeholder="Enter A Song, Album, or Artist"
         onChange={handleTermChange}

@@ -11,6 +11,10 @@ html {
 }
 
 h1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   padding: .77rem 0;
   background-color: #304A85;
   height: 50px;

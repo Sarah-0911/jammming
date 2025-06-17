@@ -6,29 +6,51 @@ let accessToken;
 
 const Spotify = {
   getAccessToken() {
-    if(accessToken) {
-      return accessToken;
-    }
+    return new Promise((resolve, reject) => {
+      if (accessToken) {
+        resolve(accessToken);
+        return;
+      }
 
-    //check for access token match
-    const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
-    const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
+      // Cherche le token dans l'URL
+      const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
+      const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
 
-    if(accessTokenMatch && expiresInMatch) {
-      accessToken = accessTokenMatch[1];
-      const expiresIn = Number(expiresInMatch[1]);
-      window.setTimeout(() => accessToken = '', expiresIn * 1000);
-      window.history.pushState('Access Token', null, '/');
-      localStorage.setItem("token", accessToken);
-      return accessToken;
-    } else {
-      const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`
+      if (accessTokenMatch && expiresInMatch) {
+        accessToken = accessTokenMatch[1];
+        const expiresIn = Number(expiresInMatch[1]);
+
+        window.setTimeout(() => accessToken = '', expiresIn * 1000);
+        localStorage.setItem("token", accessToken);
+        window.history.replaceState(null, null, '/'); // Nettoie l'URL
+
+        resolve(accessToken);
+        return;
+      }
+
+      // Sinon, regarde dans localStorage
+      const storedToken = localStorage.getItem("token");
+      if (storedToken) {
+        accessToken = storedToken;
+        resolve(accessToken);
+        return;
+      }
+
+      // Pas de token : redirige vers Spotify
+      const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
       window.location = accessUrl;
-    }
+      // On ne résout jamais la promesse ici car on quitte la page
+    });
   },
 
   async search (term) {
-    const accessToken = this.getAccessToken();
+    const accessToken = await this.getAccessToken();
+
+      if (!accessToken) {
+      // Impossible d'avoir un token : on ne fait rien
+      return [];
+    }
+
     const searchUrl = `https://api.spotify.com/v1/search?type=track&q=${term}`;
     const options = {
       method: 'GET',
@@ -62,7 +84,7 @@ const Spotify = {
       return;
     }
 
-    const accessToken = this.getAccessToken();
+    const accessToken = await this.getAccessToken();
     const headers = { Authorization: `Bearer ${accessToken}` };
     let userId;
 

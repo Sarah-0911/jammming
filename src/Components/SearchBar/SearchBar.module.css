@@ -1,16 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap');
 
-.SearchBar {
+.SearchBarContainer {
+  height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 6rem 0;
   margin-bottom: 4rem;
   background-image: url('./hero_vinyl.jpg');
   background-size: cover;
 }
 
-.SearchBar input {
+.SearchBarContainer input {
   width: 80%;
   padding: .88rem 0;
   border: 1px solid #fff;
