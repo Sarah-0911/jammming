@@ -49,8 +49,7 @@ const Spotify = {
   async search (term) {
     const accessToken = await this.getAccessToken();
 
-      if (!accessToken) {
-      // Impossible d'avoir un token : on ne fait rien
+    if (!accessToken) {
       return [];
     }
 

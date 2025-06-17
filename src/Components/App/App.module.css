@@ -6,41 +6,9 @@ html,
   height: 100%;
 }
 
-html {
-  font-size: 18px;
-}
-
-h1 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: .77rem 0;
-  background-color: #304A85;
-  height: 50px;
-  text-align: center;
-  letter-spacing: .2rem;
-  font-family: "Lobster Two", sans-serif;
-  font-size: 2.2rem;
-  color: #fff;
-  font-weight: 700;
-  font-style: italic;
-  cursor: default;
-}
-
-h1 .highlight {
-  color: #fffae7;
-  font-weight: 800;
-}
-
 h2 {
   font-family: 'Poppins', sans-serif;
   font-size: 1.55rem;
-}
-
-.App {
-  background-color: #fffae7;
-  background-size: cover;
 }
 
 .AppPlaylist {

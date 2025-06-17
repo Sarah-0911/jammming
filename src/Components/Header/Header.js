@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import styles from './SearchBar.module.css';
+import styles from './Header.module.css';
 
-const SearchBar = props => {
+const Header = props => {
   const [term, setTerm] = useState("");
 
   const handleTermChange = event => {
@@ -17,7 +17,8 @@ const SearchBar = props => {
   }
 
   return (
-    <div className={styles.SearchBarContainer}>
+    <div className={styles.HeaderContainer}>
+      <h1>Jammming</h1>
       <input
         placeholder="Enter A Song, Album, or Artist"
         onChange={handleTermChange}
@@ -32,4 +33,4 @@ const SearchBar = props => {
   )
 }
 
-export default SearchBar;
+export default Header;
