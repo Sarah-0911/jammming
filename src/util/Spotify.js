@@ -23,17 +23,25 @@ const Spotify = {
         accessToken = accessTokenMatch[1];
         const expiresIn = Number(expiresInMatch[1]);
 
-        window.setTimeout(() => accessToken = '', expiresIn * 1000);
+        const expiryAt = Date.now() + expiresIn * 1000;
         localStorage.setItem("token", accessToken);
-        window.history.replaceState(null, null, '/'); // Nettoie l'URL
+        localStorage.setItem("tokenExpiry", expiryAt.toString());
 
+        window.setTimeout(() => {
+          accessToken = '';
+          localStorage.removeItem("token");
+        }, expiresIn * 1000);
+
+        window.history.replaceState(null, null, '/'); // Nettoie l'URL
         resolve(accessToken);
         return;
       }
 
       // Sinon, regarde dans localStorage
       const storedToken = localStorage.getItem("token");
-      if (storedToken) {
+      const expiryTime = localStorage.getItem("tokenExpiry");
+
+      if (storedToken && expiryTime && Date.now() < Number(expiryTime)) {
         accessToken = storedToken;
         resolve(accessToken);
         return;

@@ -11,7 +11,7 @@ h2 {
   font-size: 1.55rem;
 }
 
-.AppPlaylist {
+.appPlaylist {
   padding: 0 8% 4% 8%;
   display: flex;
   justify-content: space-between;
@@ -21,7 +21,7 @@ h2 {
 }
 
 @media only screen and (max-width: 1020px) {
-  .AppPlaylist {
+  .appPlaylist {
     align-items: center;
     flex-direction: column;
   }

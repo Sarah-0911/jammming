@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Header.module.css';
 
-const Header = props => {
+const Header = ({ onSearch }) => {
   const [term, setTerm] = useState("");
 
   const handleTermChange = event => {
@@ -9,7 +9,7 @@ const Header = props => {
   }
 
   const search = () => {
-    props.onSearch(term);
+    onSearch(term);
   }
 
   const handleKeyDown = event => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './App.module.css';
 
 import Header from '../Header/Header';
@@ -29,17 +29,20 @@ const App = () => {
     fetchToken();
   }, []);
 
+  const playlistRef = useRef(null);
+
   const handleSearch = async (term) => {
     if (!tokenReady) {
       return;
     }
-
     setLoading(true);
 
     try {
       const results = await Spotify.search(term);
-      // console.log(results);
       setSearchResults(results);
+      setTimeout(() => {
+        playlistRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
     } catch (error) {
       console.log(error);
     } finally {
@@ -79,7 +82,7 @@ const App = () => {
     <div>
       <Header onSearch={handleSearch} />
 
-      <div className={styles.AppPlaylist}>
+      <div className={styles.appPlaylist} ref={playlistRef}>
         {loading && <p>Chargement...</p> }
         <SearchResults
           searchResults={searchResults}
