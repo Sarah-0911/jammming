@@ -7,7 +7,7 @@
   padding: 1.5rem 2rem;
   background-color: #F3B143;
   border-radius: 12px;
-  box-shadow: 9px 9px 0px -2px rgba(203, 83, 49);
+  /* box-shadow: 9px 9px 0px -2px rgba(203, 83, 49); */
   font-family: 'Rubik', 'Poppins', sans-serif;
 }
 
@@ -18,11 +18,10 @@
   text-align: center;
   padding: 1.3rem 2rem 1.5rem 2.2rem;
   font-family: "Kumbh Sans", sans-serif;
-  border-bottom: 1px solid #CB5331;
   font-weight: 700;
   clip-path: polygon(8% 12%, 95% 1%, 87% 87%, 13% 81%);
   /* filter: drop-shadow(9px 9px 0px -2px #000000); */
-  background-color: #CB5331;
+  background-color: rgba(203, 83, 49, .9);
   letter-spacing: .1rem;
   font-size: 1.5rem;
   text-transform: uppercase;
@@ -35,7 +34,7 @@
 
 @media only screen and (max-width: 1020px) {
   .searchResults {
-    width: 90%;
+    width: 80%;
     margin-bottom: 2rem;
   }
 }

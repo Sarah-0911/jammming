@@ -19,7 +19,7 @@ const Header = ({ onSearch }) => {
   return (
     <div className={styles.headerContainer}>
       <div className={styles.headerContent}>
-        <h1>Jammming</h1>
+        <h1>jammming</h1>
         <input
           placeholder="Enter A Song, Album, or Artist"
           onChange={handleTermChange}

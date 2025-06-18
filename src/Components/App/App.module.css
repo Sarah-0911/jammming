@@ -17,7 +17,8 @@ h2 {
   gap: 20px;
   font-family: 'Work Sans', sans-serif;
   font-weight: 500;
-  background-color: #faf2e9;
+  /* background-color: #283A2B; */
+  background-image: url("./bg-beige.jpg");
   padding-top: 4rem;
 }
 
