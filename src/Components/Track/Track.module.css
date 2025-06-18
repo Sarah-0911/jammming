@@ -14,11 +14,11 @@
   transition: color .25s;
   border: 0px;
   background-color: rgba(0, 0, 0, 0);
-  color: #faf2e9;
+  color: #323232;
 }
 
 .trackAction:hover {
-  color: rgba(265, 265, 265, .5);
+  color: rgba(50, 50, 50, .7);
 }
 
 .trackInfos {
@@ -27,13 +27,14 @@
 }
 
 .trackInfos h3 {
-  color: #283A2B;
+  font-weight: 500;
+  color: #323232;
   margin-bottom: .28rem;
 }
 
 .trackInfos img {
   border-radius: 4px;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 

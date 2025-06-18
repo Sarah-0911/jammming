@@ -64,19 +64,25 @@ const App = () => {
     <div>
       <Header onSearch={handleSearch} />
 
-      <div className={styles.appPlaylist} ref={playlistRef}>
-        {loading && <p>Chargement...</p> }
-        <SearchResults
-          searchResults={searchResults}
-          onAdd={addTrack}
-        />
-        <Playlist
-          playlistName={playlistName}
-          playlistTracks={playlistTracks}
-          onRemove={removeTrack}
-          onNameChange={updatePlaylistName}
-          onSave={savePlaylist}
-        />
+      <div className={styles.mainContainer} ref={playlistRef}>
+        {loading && <p>Loading...</p> }
+        <div className={styles.appSections}>
+        {searchResults.length > 0 && (
+          <>
+            <SearchResults
+              searchResults={searchResults}
+              onAdd={addTrack}
+            />
+            <Playlist
+              playlistName={playlistName}
+              playlistTracks={playlistTracks}
+              onRemove={removeTrack}
+              onNameChange={updatePlaylistName}
+              onSave={savePlaylist}
+            />
+          </>
+        )}
+        </div>
       </div>
     </div>
   );

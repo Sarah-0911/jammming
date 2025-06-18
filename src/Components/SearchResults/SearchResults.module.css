@@ -1,26 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
 
 .searchResults {
-  width: 50%;
+  width: 54%;
   max-height: 70vh;
   overflow-y: auto;
   padding: 1.5rem 2rem;
-  background-color: #F3B143;
   border-radius: 12px;
-  /* box-shadow: 9px 9px 0px -2px rgba(203, 83, 49); */
   font-family: 'Rubik', 'Poppins', sans-serif;
 }
 
 .title {
   display: block;
-  margin: 0 auto 32px;
+  margin: 10px auto 32px;
   width: fit-content;
   text-align: center;
   padding: 1.3rem 2rem 1.5rem 2.2rem;
   font-family: "Kumbh Sans", sans-serif;
   font-weight: 700;
+  color: #202020;
   clip-path: polygon(8% 12%, 95% 1%, 87% 87%, 13% 81%);
-  /* filter: drop-shadow(9px 9px 0px -2px #000000); */
   background-color: rgba(203, 83, 49, .9);
   letter-spacing: .1rem;
   font-size: 1.5rem;

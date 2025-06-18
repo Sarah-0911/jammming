@@ -1,32 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
 
 .playlistContainer {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  overflow-y: scroll;
-  padding: 0 1rem 2.27rem 1rem;
-  width: 37%;
+  padding: 1.5rem 2rem;
   max-height: 70vh;
   overflow-y: auto;
   padding: 1.5rem 2rem;
   background-color: #F3B143;
-  border-radius: 12px;
-  /* box-shadow: 9px 9px 0px -2px rgba(203, 83, 49); */
   font-family: 'Rubik', 'Poppins', sans-serif;
 }
 
+.playlistHeader {
+  flex: 0 0 auto;
+}
+
+.playlistScroll {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  min-height: 0;
+}
 
 .playlistContainer input {
   width: 100%;
   outline: 0;
   background: transparent;
-  border: 1px solid #fdfcdc;
+  border: 1px solid #323232;
   border-radius: 3px;
   font-size: 1.2rem;
-  color: #faf2e9;
+  color: #323232;
   margin: 1.4rem 0 1.8rem 0;
   padding: .7rem 0 .7rem .5rem;
   font-family: 'Rubik', sans-serif;
@@ -35,12 +39,18 @@
 }
 
 .playlistContainer input::placeholder {
-  color: #faf2e9;
+  color: #323232;
   opacity: .8;
 }
 
 input:focus {
   outline: 1px solid #fdfcdc;
+}
+
+.playlistFooter {
+  flex: 0 0 auto;
+  margin-top: 1rem;
+  position: relative;
 }
 
 .playlistSave {
@@ -73,6 +83,7 @@ input:focus {
     width: 0px;
     background: transparent;
 }
+
 
 @media only screen and (max-width: 1020px) {
   .playlistContainer {
