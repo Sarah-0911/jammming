@@ -1,3 +1,5 @@
+import fetch from 'node-fetch'; // ✅ obligatoire pour Node
+
 export async function handler() {
   const clientId = process.env.SPOTIFY_CLIENT_ID;
   const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
