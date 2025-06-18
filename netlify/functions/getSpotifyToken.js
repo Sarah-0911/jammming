@@ -3,6 +3,8 @@ const fetch = require('node-fetch');
 exports.handler = async function(event, context) {
   const clientId = process.env.SPOTIFY_CLIENT_ID;
   const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+  console.log('CLIENT ID:', clientId);
+  console.log('CLIENT SECRET:', clientSecret ? '****' : 'absent');
 
   // Encodage en base64 du couple id:secret pour l'auth HTTP Basic
   const authString = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');

@@ -22,7 +22,7 @@ export async function searchTracks(term) {
 
   const accessToken = await getClientToken();
 
-  const searchUrl = `https://api.spotify.com/v1/search?type=track&q=${encodeURIComponent(term)}&limit=20`;
+  const searchUrl = `https://api.spotify.com/v1/search?type=track&q=${encodeURIComponent(term)}&limit=40`;
 
     const options = {
     headers: {

@@ -10,32 +10,13 @@ import { searchTracks } from '../../util/searchTracks';
 
 const App = () => {
     const [loading, setLoading] = useState(false);
-    // const [tokenReady, setTokenReady] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
     const [playlistName, setPlaylistName] = useState('');
     const [playlistTracks, setPlaylistTracks] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchToken = async () => {
-  //     try {
-  //       const token = await Spotify.getAccessToken();
-  //       if (token){
-  //         setTokenReady(true);
-  //       }
-  //     } catch (error) {
-  //       console.error('Error fetching access token:', error);
-  //     }
-  //   };
-
-  //   fetchToken();
-  // }, []);
-
   const playlistRef = useRef(null);
 
   const handleSearch = async (term) => {
-    // if (!tokenReady) {
-    //   return;
-    // }
     setLoading(true);
 
     try {
