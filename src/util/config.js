@@ -1,5 +1,5 @@
 const config = {
-  clientId: "002028536a50482ba50247080f0d5f76"
+  clientId: process.env.REACT_APP_SPOTIFY_CLIENT_ID
 }
 
 export default config;

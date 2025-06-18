@@ -3,11 +3,25 @@ import config from './config';
 const clientId = config.clientId;
 const redirectUri = window.location.hostname === 'localhost'
   ? 'http://localhost:3000/'
-  : 'https://react-jammming-2a8c29957e39.herokuapp.com/';
+  : 'https://jammmingomusic.netlify.app/';
 
 let accessToken;
 
+// ✅ Récupère le token public via Netlify Function
+async function getPublicAccessToken() {
+  try {
+    const response = await fetch('/.netlify/functions/spotify-token');
+    if (!response.ok) throw new Error('Erreur lors de la récupération du token public');
+    const data = await response.json();
+    return data.access_token;
+  } catch (error) {
+    console.error('Erreur token public:', error);
+    return null;
+  }
+}
+
 const Spotify = {
+  // 🔒 Auth utilisateur → utilisée uniquement pour "Save to Spotify"
   getAccessToken() {
     return new Promise((resolve, reject) => {
       if (accessToken) {
@@ -47,7 +61,7 @@ const Spotify = {
         return;
       }
 
-      // Pas de token : redirige vers Spotify
+      // ⛔ Si pas de token : redirection vers login Spotify (uniquement pour "Save")
       const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
       window.location = accessUrl;
       // On ne résout jamais la promesse ici car on quitte la page
@@ -55,13 +69,10 @@ const Spotify = {
   },
 
   async search (term) {
-    const accessToken = await this.getAccessToken();
+    const accessToken = await getPublicAccessToken();
+    if (!accessToken) return [];
 
-    if (!accessToken) {
-      return [];
-    }
-
-    const searchUrl = `https://api.spotify.com/v1/search?type=track&q=${term}`;
+    const searchUrl = `https://api.spotify.com/v1/search?type=track&q=${encodeURIComponent(term)}`;
     const options = {
       method: 'GET',
       headers: {
@@ -76,17 +87,16 @@ const Spotify = {
 
     const jsonResponse = await response.json();
     console.log('Search API response:', jsonResponse);
-    if (!jsonResponse.tracks) {
-      return [];
-      }
-      return jsonResponse.tracks.items.map(track => track = {
-        id: track.id,
-        name: track.name,
-        artist: track.artists[0].name,
-        album: track.album.name,
-        uri: track.uri,
-        thumbnail: track.album.images[2].url,
-      });
+    if (!jsonResponse.tracks) return []
+
+    return jsonResponse.tracks.items.map(track => track = {
+      id: track.id,
+      name: track.name,
+      artist: track.artists[0].name,
+      album: track.album.name,
+      uri: track.uri,
+      thumbnail: track.album.images[2].url,
+    });
   },
 
   async savePlaylist(name, trackURIs) {
@@ -100,15 +110,13 @@ const Spotify = {
     let userId;
 
     try {
+      // 1. Récupération de l’utilisateur
       const response = await fetch('https://api.spotify.com/v1/me', { headers: headers });
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch user information.');
-      }
-
+      if (!response.ok) throw new Error('Failed to fetch user information.');
       const jsonResponse = await response.json();
       userId = jsonResponse.id;
 
+      // 2. Création de la playlist
       const createPlaylistResponse = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`,
         {
           method: 'POST',
@@ -116,14 +124,13 @@ const Spotify = {
           body: JSON.stringify({ name: name })
         });
 
-      if (!createPlaylistResponse.ok) {
-        throw new Error('Failed to create playlist.');
-      }
+      if (!createPlaylistResponse.ok) throw new Error('Failed to create playlist.');
 
       const playlistJsonResponse = await createPlaylistResponse.json();
       const playlistID = playlistJsonResponse.id;
 
-      const createTracksUriResponse = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistID}/tracks`,
+      // 3. Ajout des titres à la playlist
+      await fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistID}/tracks`,
       {
         method: 'POST',
         headers: headers,
