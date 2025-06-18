@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import styles from './App.module.css';
 
 import Header from '../Header/Header';
@@ -6,39 +6,40 @@ import SearchResults from '../SearchResults/SearchResults'
 import Playlist from '../Playlist/Playlist';
 
 import Spotify from '../../util/Spotify';
+import { searchTracks } from '../../util/searchTracks';
 
 const App = () => {
     const [loading, setLoading] = useState(false);
-    const [tokenReady, setTokenReady] = useState(false);
+    // const [tokenReady, setTokenReady] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
     const [playlistName, setPlaylistName] = useState('');
     const [playlistTracks, setPlaylistTracks] = useState([]);
 
-  useEffect(() => {
-    const fetchToken = async () => {
-      try {
-        const token = await Spotify.getAccessToken();
-        if (token){
-          setTokenReady(true);
-        }
-      } catch (error) {
-        console.error('Error fetching access token:', error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchToken = async () => {
+  //     try {
+  //       const token = await Spotify.getAccessToken();
+  //       if (token){
+  //         setTokenReady(true);
+  //       }
+  //     } catch (error) {
+  //       console.error('Error fetching access token:', error);
+  //     }
+  //   };
 
-    fetchToken();
-  }, []);
+  //   fetchToken();
+  // }, []);
 
   const playlistRef = useRef(null);
 
   const handleSearch = async (term) => {
-    if (!tokenReady) {
-      return;
-    }
+    // if (!tokenReady) {
+    //   return;
+    // }
     setLoading(true);
 
     try {
-      const results = await Spotify.search(term);
+      const results = await searchTracks(term);
       setSearchResults(results);
       setTimeout(() => {
         playlistRef.current?.scrollIntoView({ behavior: "smooth" });

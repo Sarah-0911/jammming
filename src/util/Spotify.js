@@ -7,19 +7,6 @@ const redirectUri = window.location.hostname === 'localhost'
 
 let accessToken;
 
-// ✅ Récupère le token public via Netlify Function
-async function getPublicAccessToken() {
-  try {
-    const response = await fetch('/.netlify/functions/spotify-token');
-    if (!response.ok) throw new Error('Erreur lors de la récupération du token public');
-    const data = await response.json();
-    return data.access_token;
-  } catch (error) {
-    console.error('Erreur token public:', error);
-    return null;
-  }
-}
-
 const Spotify = {
   // 🔒 Auth utilisateur → utilisée uniquement pour "Save to Spotify"
   getAccessToken() {
@@ -68,36 +55,36 @@ const Spotify = {
     });
   },
 
-  async search (term) {
-    const accessToken = await getPublicAccessToken();
-    if (!accessToken) return [];
+  // async search (term) {
+  //   const accessToken = await getPublicAccessToken();
+  //   if (!accessToken) return [];
 
-    const searchUrl = `https://api.spotify.com/v1/search?type=track&q=${encodeURIComponent(term)}`;
-    const options = {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
-    }
-    const response = await fetch(searchUrl, options);
+  //   const searchUrl = `https://api.spotify.com/v1/search?type=track&q=${encodeURIComponent(term)}`;
+  //   const options = {
+  //     method: 'GET',
+  //     headers: {
+  //       Authorization: `Bearer ${accessToken}`
+  //     }
+  //   }
+  //   const response = await fetch(searchUrl, options);
 
-    if (!response.ok) {
-      throw new Error(`${response.status} ${response.statusText}`);
-    }
+  //   if (!response.ok) {
+  //     throw new Error(`${response.status} ${response.statusText}`);
+  //   }
 
-    const jsonResponse = await response.json();
-    console.log('Search API response:', jsonResponse);
-    if (!jsonResponse.tracks) return []
+  //   const jsonResponse = await response.json();
+  //   console.log('Search API response:', jsonResponse);
+  //   if (!jsonResponse.tracks) return []
 
-    return jsonResponse.tracks.items.map(track => track = {
-      id: track.id,
-      name: track.name,
-      artist: track.artists[0].name,
-      album: track.album.name,
-      uri: track.uri,
-      thumbnail: track.album.images[2].url,
-    });
-  },
+  //   return jsonResponse.tracks.items.map(track => track = {
+  //     id: track.id,
+  //     name: track.name,
+  //     artist: track.artists[0].name,
+  //     album: track.album.name,
+  //     uri: track.uri,
+  //     thumbnail: track.album.images[2].url,
+  //   });
+  // },
 
   async savePlaylist(name, trackURIs) {
     if (!name || !trackURIs.length) {
