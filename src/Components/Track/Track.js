@@ -5,11 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleMinus, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 
 const Track = props => {
-  const addTrack = () => {
+
+
+  const handleAddTrack = () => {
     props.onAdd(props.track);
   }
 
-  const removeTrack = () => {
+  const handleRemoveTrack = () => {
     props.onRemove(props.track);
   }
 
@@ -18,7 +20,7 @@ const Track = props => {
       return (
         <button
           className={styles.trackAction}
-          onClick={removeTrack}>
+          onClick={handleRemoveTrack}>
           <FontAwesomeIcon icon={faCircleMinus} />
         </button>
       )
@@ -26,7 +28,7 @@ const Track = props => {
       return (
         <button
           className={styles.trackAction}
-          onClick={addTrack}>
+          onClick={handleAddTrack}>
           <FontAwesomeIcon icon={faCirclePlus} />
         </button>
       )

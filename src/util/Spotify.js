@@ -2,7 +2,7 @@ import config from './config';
 
 const clientId = config.clientId;
 const redirectUri = window.location.hostname === 'localhost'
-  ? 'http://localhost:3000/'
+  ? 'http://localhost:8888/'
   : 'https://jammmingomusic.netlify.app/';
 
 let accessToken;
