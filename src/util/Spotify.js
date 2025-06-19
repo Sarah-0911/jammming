@@ -9,7 +9,7 @@ let accessToken;
 
 const Spotify = {
   // 🔒 Auth utilisateur → utilisée uniquement pour "Save to Spotify"
-  getAccessToken() {
+  getAccessToken(shouldRedirect = true) {
     return new Promise((resolve, reject) => {
       if (accessToken) {
         resolve(accessToken);
@@ -48,10 +48,13 @@ const Spotify = {
         return;
       }
 
-      // ⛔ Si pas de token : redirection vers login Spotify (uniquement pour "Save")
-      const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
-      window.location = accessUrl;
-      // On ne résout jamais la promesse ici car on quitte la page
+      if (shouldRedirect) {
+        const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
+        window.location = accessUrl;
+        // ⛔ Interrompt le flow → la promesse ne sera jamais résolue (on quitte la page)
+      } else {
+        resolve(null); // ✅ Pas de redirection : on retourne juste null, utile pour la page d’accueil
+      }
     });
   },
 

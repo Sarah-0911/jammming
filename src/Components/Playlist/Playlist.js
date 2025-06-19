@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Playlist.module.css';
 import TrackList from '../TrackList/TrackList';
+import Spotify from '../../util/Spotify';
 
 const Playlist = props => {
 
@@ -11,8 +12,12 @@ const Playlist = props => {
     props.onNameChange(newName);
   }
 
-  const handleSave = () => {
+  const handleSave = async () => {
   if (props.playlistTracks.length === 0) return;
+
+    // 🔒 Vérifie si l’utilisateur est connecté (redirige sinon)
+  const accessToken = await Spotify.getAccessToken();
+  if (!accessToken) return;
 
   props.onSave();
   setSaved(true);
