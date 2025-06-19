@@ -1,3 +1,7 @@
-.TrackList {
+.trackList {
   width: 100%;
+}
+
+.trackList ul {
+  list-style: none;
 }

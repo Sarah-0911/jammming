@@ -22,7 +22,7 @@ const TrackList = props => {
   })
 
   return (
-    <div className={styles.TrackList}>
+    <div className={styles.trackList}>
       <ul>
         {trackElements}
       </ul>
