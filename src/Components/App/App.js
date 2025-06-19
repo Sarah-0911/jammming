@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './App.module.css';
 
 import Header from '../Header/Header';
@@ -15,6 +15,11 @@ const App = () => {
     const [playlistTracks, setPlaylistTracks] = useState([]);
 
   const playlistRef = useRef(null);
+
+  useEffect(() => {
+  // Appel direct au démarrage de l'app pour stocker le token depuis l'URL
+  Spotify.getAccessToken();
+  }, []);
 
   const handleSearch = async (term) => {
     setLoading(true);
