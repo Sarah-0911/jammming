@@ -15,9 +15,15 @@ const Playlist = props => {
   const handleSave = async () => {
   if (props.playlistTracks.length === 0) return;
 
-    // 🔒 Vérifie si l’utilisateur est connecté (redirige sinon)
+  localStorage.setItem("playlist_name", props.playlistName);
+  localStorage.setItem("playlist_tracks", JSON.stringify(props.playlistTracks));
+
+  // 🔒 Vérifie si l’utilisateur est connecté (redirige sinon)
   const accessToken = await Spotify.getAccessToken();
   if (!accessToken) return;
+
+  localStorage.removeItem("playlist_name");
+  localStorage.removeItem("playlist_tracks");
 
   props.onSave();
   setSaved(true);

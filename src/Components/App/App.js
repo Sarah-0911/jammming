@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './App.module.css';
 
 import Header from '../Header/Header';
@@ -15,6 +15,47 @@ const App = () => {
     const [playlistTracks, setPlaylistTracks] = useState([]);
 
   const playlistRef = useRef(null);
+
+  useEffect(() => {
+    const savedName = localStorage.getItem("playlist_name");
+    const savedTracks = localStorage.getItem("playlist_tracks");
+
+    if (savedName && savedTracks) {
+      setPlaylistName(savedName);
+
+      try {
+        const parsedTracks = JSON.parse(savedTracks);
+        setPlaylistTracks(parsedTracks);
+      } catch (e) {
+          console.error("Erreur de parsing des tracks sauvegardés :", e);
+      }
+    }
+
+      // 2. Si on a un token dans l'URL, lance la sauvegarde automatiquement
+    const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
+    if (accessTokenMatch) {
+      // Le token vient d'arriver : appelle savePlaylist avec la playlist stockée
+      const saveStoredPlaylist = async () => {
+        if (!savedName || !savedTracks) return;
+        try {
+          const parsedTracks = JSON.parse(savedTracks);
+          const trackUris = parsedTracks.map(track => track.uri);
+          await Spotify.savePlaylist(savedName, trackUris);
+          localStorage.removeItem("playlist_name");
+          localStorage.removeItem("playlist_tracks");
+          setPlaylistName('New Playlist');
+          setPlaylistTracks([]);
+          // Nettoie l'URL pour enlever le token
+          window.history.replaceState(null, null, '/');
+        } catch (e) {
+          console.error("Erreur lors de la sauvegarde automatique :", e);
+        }
+      }
+      saveStoredPlaylist();
+    }
+
+  }, [])
+
 
   const handleSearch = async (term) => {
     setLoading(true);
