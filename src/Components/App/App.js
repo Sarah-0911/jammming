@@ -43,7 +43,7 @@ const App = () => {
           await Spotify.savePlaylist(savedName, trackUris);
           localStorage.removeItem("playlist_name");
           localStorage.removeItem("playlist_tracks");
-          setPlaylistName('New Playlist');
+          setPlaylistName('');
           setPlaylistTracks([]);
           // Nettoie l'URL pour enlever le token
           window.history.replaceState(null, null, '/');
